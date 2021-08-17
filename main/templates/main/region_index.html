@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% csrf_token %}
+{% if regions %}
+    <h4>Tanlangan davlat: {{ country.name }}</h4>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+
+                <th>Viloyat nomi</th>
+                <th style="width: 25%;">Harakatlar</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for region in regions %}
+            <tr>
+                <td>{{ region.name }}</td>
+                
+                <td class="text-nowrap">
+                   
+
+                    <a href="{% url 'main_region_update' region.id %}" class="btn btn-warning ml-2">
+                        <i class="bi-pencil text-white"></i>
+                    </a>
+                    <a href="{% url 'main_region_delete' region.id region.country_id %}" class="btn btn-danger ml-2 confirm">
+                        <i class="bi-trash text-white"></i>
+                    </a>
+                </td>
+
+            </tr>
+
+            {% endfor %}
+        </tbody>
+
+    </table>
+    {% else %}
+        <div class="alert alert-danger">Birorta viloyat yo'q</div>
+    {% endif %}
+   
+    <a href="{% url 'main_region_create' country.id %}" class="btn btn-primary">Viloyat qo'shish</a>
+    <a href="{% url 'main_index' %}" class="btn btn-info bi-house-door-fill"></a>
+    
+    
+
+{% endblock %}

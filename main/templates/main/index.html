@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% csrf_token %}
+<div class="text-right mb-4">
+    <a href="{% url 'main_create' %}" class="btn btn-info">Qo'shish</a>
+</div>
+
+<!-- <div class="d-flex">
+    <a href="{% url 'main_log' %}" class="btn btn-info mr-auto mb-5 bi-box-arrow-in-right">Ro'yhatdan o'tish</a>
+</div> -->
+{% if list %}
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+
+                <th>Davlat nomi</th>
+                <!-- <th>Davlat poytaxti</th> -->
+                <!-- <th>Viloyatlar soni</th> -->
+                <!-- <th style="width: 25%;">Harakatlar</th> -->
+
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for d in list %}
+            <tr>
+                <td>
+                    <h4>{{ d.name }}</h4> 
+                </td>
+                <!-- <td>{{ d.poytaxt }}</td> -->
+                <!-- <td>{{ d.region_count }}</td> -->
+                <!-- <td class="text-nowrap">
+                    <a href="{% url 'main_region_create' d.id %}" class="btn btn-primary ml-auto">
+                        Viloyat qo'shish
+                    </a>
+
+                    <a href="{% url 'main_update' d.id %}" class="btn btn-warning ml-2">
+                        <i class="bi-pencil text-white"></i>
+                    </a>
+                    <a href="{% url 'main_delete' d.id %}" class="btn btn-danger ml-2 confirm">
+                        <i class="bi-trash text-white"></i>
+                    </a>
+                </td> -->
+
+            </tr>
+
+            {% endfor %}
+        </tbody>
+
+    </table>
+    {% else %}
+        <div class="alert alert-danger">Birorta davlat yo'q</div>
+    {% endif %}
+    
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h1>Tanlangan davlat: {{ country.name }}</h1>
+    <form action="{% if region %}{% url 'main_region_update' region.id %}{% else %}{% url 'main_region_create' country.id %}{% endif %}" method="POST" class="form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_name">Viloyat nomi</label>
+            <input id="id_name" name="name" value="{{ region.name }}" type="text" class="form-control" placeholder="Viloyat nomini kiriting" />
+        </div>
+        
+        <button type="submit" class="btn btn-success">{% if region %}<p class="bi-pencil" style="height: 10px;">Tahrirlash</p>{% else %}<p style="height: 10px;">Qo'shish</p>{% endif %}</button>
+        <a href="{% url 'main_index' %}" class="btn btn-info ml-auto bi-house-door-fill"></a>
+        <a href="{% url 'main_region_index' country.id %}" class="btn btn-info bi-arrow-left-circle-fill"></a>
+        
+        
+    </form>
+{% endblock %}

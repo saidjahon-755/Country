@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<form method="POST" class="form">
+    
+    <div class="form-group">
+        <label for="exampleInputEmail1">Email</label>
+        <input type="email" name="malumot" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <small id="emailHelp" class="form-text text-muted">Email addresingizni birovga jo'natilmaydi</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Mahfiy so'z</label>
+        <input type="password" name="malumot" class="form-control" id="exampleInputPassword1"/>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Tasdiqlash</button>
+    <!-- <div class="d-flex">
+        <a href="{% url 'main_index' %}" class="btn btn-primary ml-auto">
+            <i class="bi-house-door"></i>
+        </a>
+    </div> -->
+   
+</form>
+{% endblock %}

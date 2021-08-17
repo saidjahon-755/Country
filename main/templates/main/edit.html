@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <form action="{% if d %}{% url 'main_update' d.id %}{% else %}{% url 'main_create' %}{% endif %}" method="POST" class="form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_name">Davlat nomi</label>
+            <input id="id_name" name="name" value="{{ d.name }}" type="text" class="form-control" placeholder="Davlat nomini kiriting" />
+            <!-- <label for="id_name">Poytaxt nomi</label>
+            <input id="id_name" name="poytaxt" value="{{ d.poytaxt }}" type="text" class="form-control" placeholder="Poytaxt nomini kiriting" /> -->
+        </div>
+        <!-- <div class="d-flex">
+            <a href="{% url 'main_index' %}" class="btn btn-info ml-auto bi-house-door-fill"></a>
+        </div> -->
+        <button type="submit" class="btn btn-success">{% if d %}<p style="height: 10px;">   Tahrirlash</p>{% else %}<p  style="height: 10px;">Qo'shish</p>{% endif %}</button>
+    </form>
+{% endblock %}
